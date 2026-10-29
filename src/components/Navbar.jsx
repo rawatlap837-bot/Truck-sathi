@@ -8,13 +8,13 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/90 shadow-sm shadow-slate-900/5 backdrop-blur-xl">
-      <nav className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 py-3 sm:px-5 sm:py-4">
+      <nav className="mx-auto flex w-full max-w-6xl items-center gap-3 px-4 py-1 sm:px-5 sm:py-1.5">
         <a href="#home" className="shrink-0" aria-label={`${brand.name} home`}>
           <img src={brand.logo} alt={brand.name} className="h-[4.5rem] w-auto max-w-44 object-contain sm:h-20 sm:max-w-60 lg:h-24 lg:max-w-72" />
         </a>
 
         {/* Desktop menu */}
-        <ul className="hidden items-center gap-7 text-sm font-medium xl:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-7 text-sm font-medium xl:flex">
           {navLinks.map((link) => (
             <li key={link.href}>
           <a href={link.href} className="transition-colors hover:text-brand">{link.label}</a>
@@ -34,10 +34,12 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <ul className="space-y-3 border-t border-slate-100 px-5 py-4 xl:hidden">
+        <ul className="grid gap-1 border-t border-slate-100 bg-white/95 px-4 py-3 shadow-lg shadow-slate-900/5 backdrop-blur-xl xl:hidden">
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} onClick={() => setOpen(false)} className="block font-medium">{link.label}</a>
+              <a href={link.href} onClick={() => setOpen(false)} className="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-soft hover:text-brand focus-visible:outline-2 focus-visible:outline-brand">
+                {link.label}<ArrowRight size={15} className="text-brand/60" />
+              </a>
             </li>
           ))}
         </ul>

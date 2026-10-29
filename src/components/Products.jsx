@@ -33,7 +33,7 @@ export default function Products() {
           <h3 className="font-serif text-xl font-bold">{products.bulk.title}</h3>
           <p className="mt-2 text-sm text-blue-100">{products.bulk.text}</p>
           <a href={bookingUrl("Bulk order enquiry")} target="_blank" rel="noreferrer"
-             className="mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold hover:bg-brand-dark">
+             className="button-shine mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold hover:bg-brand-dark">
             {products.bulk.cta} <ArrowRight size={16} />
           </a>
         </article>

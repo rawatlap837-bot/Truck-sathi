@@ -12,7 +12,87 @@
 
 html { scroll-behavior: smooth; }
 html, body, #root { width: 100%; max-width: 100%; min-width: 0; }
-body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; }
+body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; text-transform: capitalize; }
+
+.button-shine {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  outline: 1.5px solid rgb(29 108 242 / 38%);
+  outline-offset: 2px;
+  box-shadow: 0 5px 16px rgb(29 108 242 / 24%);
+  animation: button-float 2.8s ease-in-out infinite, button-ring 2.8s ease-out infinite;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, outline-color 180ms ease;
+}
+
+.button-shine::after {
+  position: absolute;
+  z-index: -1;
+  inset: -50% auto -50% -45%;
+  width: 35%;
+  content: "";
+  background: linear-gradient(100deg, transparent, rgb(255 255 255 / 10%), rgb(255 255 255 / 75%), rgb(255 255 255 / 10%), transparent);
+  transform: translateX(-220%) skewX(-20deg);
+  animation: button-flash 3.2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.button-shine:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 9px 22px rgb(29 108 242 / 36%);
+}
+
+.button-shine:active { transform: translateY(0) scale(.98); }
+
+.hero-icon-motion { animation: hero-icon-bob 2.8s ease-in-out infinite; }
+.hero-icon-motion:hover { animation-play-state: paused; }
+.hero-icon-motion svg { animation: hero-icon-pulse 2.8s ease-in-out infinite; }
+.hero-icon-motion svg { animation-delay: inherit; }
+.hero-icon-motion:nth-child(1) { animation-delay: 0s; }
+.hero-icon-motion:nth-child(2) { animation-delay: .2s; }
+.hero-icon-motion:nth-child(3) { animation-delay: .4s; }
+.hero-icon-motion:nth-child(4) { animation-delay: .6s; }
+
+.vehicle-motion { animation: vehicle-roll 1.4s ease-in-out infinite; transform-origin: center bottom; }
+.group:nth-child(even) .vehicle-motion { animation-delay: .35s; }
+.group:hover .vehicle-motion { animation-play-state: paused; }
+
+@keyframes button-float {
+  0%, 100% { transform: translateY(0); box-shadow: 0 5px 16px rgb(29 108 242 / 20%); }
+  50% { transform: translateY(-3px); box-shadow: 0 8px 21px rgb(29 108 242 / 32%); }
+}
+
+@keyframes button-flash {
+  0%, 12% { transform: translateX(-220%) skewX(-20deg); }
+  48%, 100% { transform: translateX(480%) skewX(-20deg); }
+}
+
+@keyframes button-ring {
+  0%, 100% { outline-color: rgb(29 108 242 / 30%); outline-offset: 2px; }
+  50% { outline-color: rgb(29 108 242 / 68%); outline-offset: 4px; }
+}
+
+@keyframes hero-icon-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes hero-icon-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes vehicle-roll {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  25% { transform: translateY(-2px) rotate(-1deg); }
+  50% { transform: translateY(0) rotate(0); }
+  75% { transform: translateY(-2px) rotate(1deg); }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .button-shine, .button-shine::after, .hero-icon-motion, .hero-icon-motion svg, .vehicle-motion { animation: none; }
+}
 
 [data-fade-in] {
   opacity: 0;
