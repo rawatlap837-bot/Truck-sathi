@@ -1,6 +1,6 @@
-﻿import { Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import { testimonials } from "../data/content";
-import { Section, SectionHeading } from "./shared";
+import { BookButton, Section, SectionHeading } from "./shared";
 
 export default function Testimonials() {
   return (
@@ -24,6 +24,9 @@ export default function Testimonials() {
             </figcaption>
           </figure>
         ))}
+      </div>
+      <div className="mt-8 text-center">
+        <BookButton>Book With Confidence <ArrowRight size={17} /></BookButton>
       </div>
     </Section>
   );

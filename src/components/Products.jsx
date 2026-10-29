@@ -1,6 +1,6 @@
 import { ArrowRight, Check } from "lucide-react";
 import { products } from "../data/content";
-import { Section, SectionHeading, Img, BookButton, bookingUrl } from "./shared";
+import { Section, SectionHeading, BookButton } from "./shared";
 
 const rupees = (n) => "₹" + n.toLocaleString("en-IN");
 
@@ -9,34 +9,33 @@ export default function Products() {
     <Section id="pricing" className="bg-soft">
       <SectionHeading eyebrow={products.eyebrow} title={products.title} text={products.text} />
 
-      <div className="mx-auto mt-8 grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="mx-auto mt-8 grid max-w-5xl place-items-center">
         {products.items.map((item) => (
-          <article key={item.name} className="flex flex-col rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm shadow-slate-900/5 transition duration-200 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/10">
-            <Img src={item.image} alt={item.name} fallback="📡" className="h-28 w-full rounded-lg object-contain" />
-            <h3 className="mt-3 font-semibold text-navy">{item.name}</h3>
-            <ul className="mt-2 flex-1 space-y-1 text-xs text-slate-600">
-              {item.points.map((p) => (
-                <li key={p} className="flex gap-1.5"><Check size={14} className="mt-0.5 shrink-0 text-brand" />{p}</li>
-              ))}
-            </ul>
-            <p className="mt-4 text-2xl font-bold text-navy">
-              {rupees(item.price)} <span className="text-sm font-normal text-slate-400 line-through">{rupees(item.oldPrice)}</span>
-            </p>
-            <BookButton extra={`Product: ${item.name}`} className="mt-3 !py-2 text-sm">
-              Book Now <ArrowRight size={16} />
-            </BookButton>
+          <article key={item.name} className="grid w-full max-w-sm overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm shadow-slate-900/5 transition duration-200 hover:-translate-y-1 hover:border-brand/30 hover:shadow-xl hover:shadow-brand/10 md:max-w-5xl md:grid-cols-2">
+            <div className="flex items-center justify-center bg-gradient-to-br from-blue-50 via-white to-sky-100 p-3 sm:p-5">
+              <img src="/images/product%20image.webp" alt="Truck Sathi GPS vehicle tracker product" className="aspect-square w-full rounded-xl bg-white object-contain md:h-full md:min-h-[30rem]" />
+            </div>
+            <div className="flex flex-col p-5 sm:p-7 md:justify-center md:p-10">
+              <span className="w-fit rounded-full border border-blue-100 bg-blue-50 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-brand">Live GPS Tracking</span>
+              <h3 className="mt-4 font-serif text-2xl font-bold text-navy sm:text-3xl">{item.name}</h3>
+              <p className="mt-2 max-w-md text-sm leading-6 text-slate-600">Track your vehicle with live location access and mobile app support in a compact, waterproof device.</p>
+              <p className="mt-5 text-xs font-bold uppercase tracking-wider text-slate-500">Product Highlights</p>
+              <ul className="mt-2 flex-1 space-y-2 text-sm text-slate-700">
+                {item.points.map((p) => (
+                  <li key={p} className="flex items-center gap-2"><span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand"><Check size={13} /></span>{p}</li>
+                ))}
+              </ul>
+              <div className="mt-6 flex items-center justify-between gap-3 rounded-2xl border border-brand/15 bg-gradient-to-r from-blue-50 to-white px-4 py-3">
+                <div><p className="text-xs font-bold uppercase tracking-wider text-brand">Price</p><p className="mt-0.5 text-4xl font-extrabold tracking-tight text-navy">{rupees(item.price)}</p></div>
+                <span className="rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-brand shadow-sm">One GPS Device</span>
+              </div>
+              <BookButton extra={`Product: ${item.name}`} className="mt-4 !py-3 text-sm">
+                Get This GPS Tracker <ArrowRight size={16} />
+              </BookButton>
+            </div>
           </article>
         ))}
 
-        {/* Bulk orders card */}
-        <article className="flex flex-col justify-center rounded-2xl bg-gradient-to-br from-navy to-slate-900 p-6 text-center text-white shadow-lg sm:col-span-2 lg:col-span-3 xl:col-span-1">
-          <h3 className="font-serif text-xl font-bold">{products.bulk.title}</h3>
-          <p className="mt-2 text-sm text-blue-100">{products.bulk.text}</p>
-          <a href={bookingUrl("Bulk order enquiry")} target="_blank" rel="noreferrer"
-             className="button-shine mt-5 inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-5 py-2.5 text-sm font-semibold hover:bg-brand-dark">
-            {products.bulk.cta} <ArrowRight size={16} />
-          </a>
-        </article>
       </div>
     </Section>
   );

@@ -40,17 +40,23 @@ export const hero = {
   ],
 };
 
+/**
+ * Vehicle cards.
+ * type  = which animated SVG vehicle with spinning wheels to show
+ *         (bike, car, auto, pickup, truck, bus)
+ * image = optional photo path. If you add one, it replaces the SVG vehicle.
+ */
 export const vehicles = {
   eyebrow: "GPS tracking devices for all vehicles",
   title: "Find the Right Solution for Your Vehicle",
   text: "From personal vehicles to heavy commercial fleets, we have a GPS tracking device for every type of vehicle.",
   items: [
-    { name: "Bikes & Scooters", emoji: "🏍️", image: "" },
-    { name: "Cars & SUVs", emoji: "🚗", image: "" },
-    { name: "Taxis & Auto-Rickshaws", emoji: "🛺", image: "" },
-    { name: "Pickup & Mini Trucks", emoji: "🛻", image: "" },
-    { name: "Trucks & Heavy Vehicles", emoji: "🚚", image: "" },
-    { name: "Buses, Dumpers & Others", emoji: "🚌", image: "" },
+    { name: "Bikes & Scooters", type: "bike", emoji: "🏍️", image: "" },
+    { name: "Cars & SUVs", type: "car", emoji: "🚗", image: "" },
+    { name: "Taxis & Auto-Rickshaws", type: "auto", emoji: "🛺", image: "" },
+    { name: "Pickup & Mini Trucks", type: "pickup", emoji: "🛻", image: "" },
+    { name: "Trucks & Heavy Vehicles", type: "truck", emoji: "🚚", image: "" },
+    { name: "Buses, Dumpers & Others", type: "bus", emoji: "🚌", image: "" },
   ],
 };
 
@@ -58,7 +64,7 @@ export const problems = {
   eyebrow: "The problems we solve",
   title: "Your Vehicle. Your Peace of Mind.",
   text: "We solve the real challenges vehicle owners face every day.",
-  image: "/images/problems.png",
+  image: "/images/section%20image2.png",
   items: [
     "Difficulty knowing the current location of a vehicle.",
     "Lack of visibility into vehicle movement.",
@@ -89,20 +95,12 @@ export const features = {
 };
 
 export const products = {
-  eyebrow: "Popular GPS devices",
-  title: "Choose Your Device & Book Now",
-  text: "Select the right GPS device for your vehicle and enjoy complete tracking and security.",
+  eyebrow: "Our GPS product",
+  title: "One GPS Tracker. Just ₹199.",
+  text: "Get a GPS vehicle tracker for just ₹199.",
   items: [
-    { name: "Bike GPS Tracker", price: 1999, oldPrice: 3499, image: "", points: ["Live location tracking", "Mobile app support", "Compact & waterproof"] },
-    { name: "Car GPS Tracker", price: 2999, oldPrice: 5499, image: "", points: ["Live location tracking", "Route history", "Geo-fencing alerts"] },
-    { name: "Truck GPS Tracker", price: 5999, oldPrice: 9999, image: "", points: ["Live location tracking", "Route history", "Remote engine cut-off (selected models)"] },
-    { name: "Fleet GPS Tracker", price: 8999, oldPrice: 14999, image: "", points: ["Multi-vehicle monitoring", "Live tracking dashboard", "Business reports"] },
+    { name: "GPS Vehicle Tracker", price: 199, image: "/images/product%20image.webp", points: ["Live location tracking", "Mobile app support", "Compact & waterproof"] },
   ],
-  bulk: {
-    title: "Bulk Orders & Fleet Solutions",
-    text: "Get special pricing for multiple vehicles and fleet management.",
-    cta: "Contact Us",
-  },
 };
 
 export const testimonials = {

@@ -53,9 +53,25 @@ body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; text-tra
 .hero-icon-motion:nth-child(3) { animation-delay: .4s; }
 .hero-icon-motion:nth-child(4) { animation-delay: .6s; }
 
+/* Real vehicle photos: gentle rolling motion (wheels in a photo cannot spin) */
 .vehicle-motion { animation: vehicle-roll 1.4s ease-in-out infinite; transform-origin: center bottom; }
 .group:nth-child(even) .vehicle-motion { animation-delay: .35s; }
 .group:hover .vehicle-motion { animation-play-state: paused; }
+
+/* ---------- SVG vehicles with spinning wheels (see VehicleIcon.jsx) ---------- */
+.wheel {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wheel-spin 0.8s linear infinite; /* smaller number = faster wheels */
+}
+
+.vehicle-body { animation: vehicle-bounce 0.45s ease-in-out infinite alternate; }
+
+.road-line { animation: road-move 0.6s linear infinite; }
+
+/* Faster wheels and road when the card is hovered */
+.group:hover .wheel { animation-duration: 0.35s; }
+.group:hover .road-line { animation-duration: 0.3s; }
 
 @keyframes button-float {
   0%, 100% { transform: translateY(0); box-shadow: 0 5px 16px rgb(29 108 242 / 20%); }
@@ -89,9 +105,17 @@ body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; text-tra
   75% { transform: translateY(-2px) rotate(1deg); }
 }
 
+/* Negative = clockwise on screen, because the SVG vehicle is flipped to face right */
+@keyframes wheel-spin { to { transform: rotate(-360deg); } }
+
+@keyframes vehicle-bounce { to { transform: translateY(-1.2px); } }
+
+/* Dashes slide left, so the vehicle looks like it is driving right */
+@keyframes road-move { to { stroke-dashoffset: 18; } }
 
 @media (prefers-reduced-motion: reduce) {
-  .button-shine, .button-shine::after, .hero-icon-motion, .hero-icon-motion svg, .vehicle-motion { animation: none; }
+  .button-shine, .button-shine::after, .hero-icon-motion, .hero-icon-motion svg,
+  .vehicle-motion, .wheel, .vehicle-body, .road-line { animation: none; }
 }
 
 [data-fade-in] {
