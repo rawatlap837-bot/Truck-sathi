@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Brand colours and fonts. Change them here and the whole page updates. */
+@theme {
+  --color-brand: #1d6cf2;
+  --color-brand-dark: #0b4fc4;
+  --color-navy: #0f2a5c;
+  --color-soft: #f2f7ff;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+}
+
+html { scroll-behavior: smooth; }
+html, body, #root { width: 100%; max-width: 100%; min-width: 0; }
+body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; }
+
+[data-fade-in] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+[data-fade-in].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-fade-in] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
