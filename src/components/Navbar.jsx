@@ -14,7 +14,7 @@ export default function Navbar() {
         </a>
 
         {/* Desktop menu */}
-        <ul className="hidden flex-1 items-center justify-center gap-7 text-sm font-medium xl:flex">
+        <ul className="hidden flex-1 items-center justify-center gap-7 text-sm font-medium xl:flex xl:text-lg">
           {navLinks.map((link) => (
             <li key={link.href}>
           <a href={link.href} className="transition-colors hover:text-brand">{link.label}</a>
@@ -23,7 +23,7 @@ export default function Navbar() {
         </ul>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
-          <BookButton className="whitespace-nowrap !px-3 !py-2 text-xs sm:!px-4 sm:text-sm">
+          <BookButton className="whitespace-nowrap !px-3 !py-2 text-xs sm:!px-4 sm:text-sm xl:!px-6 xl:!py-3 xl:text-lg">
             Book Now <ArrowRight size={15} />
           </BookButton>
           <button className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 text-navy transition hover:bg-soft xl:hidden" onClick={() => setOpen(!open)} aria-label="Toggle menu" aria-expanded={open}>

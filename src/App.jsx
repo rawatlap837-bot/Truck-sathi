@@ -8,9 +8,9 @@ import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
+import Checkout from "./components/Checkout";
 
-// Section order = page order. Move or remove a line to change the page.
-export default function App() {
+function LandingPage() {
   useEffect(() => {
     const sections = document.querySelectorAll("[data-fade-in]");
     const observer = new IntersectionObserver(
@@ -44,4 +44,9 @@ export default function App() {
       <Footer />
     </>
   );
+}
+
+// Keep checkout on its own route so payment form state and landing-page hooks stay isolated.
+export default function App() {
+  return window.location.pathname === "/checkout" ? <Checkout /> : <LandingPage />;
 }

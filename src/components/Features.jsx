@@ -18,7 +18,7 @@ export default function Features() {
           {features.items.map(({ icon: Icon, title, note }) => (
             <li key={title} className="group relative flex min-h-40 flex-col items-center gap-2.5 overflow-hidden rounded-2xl border border-slate-100 bg-white p-4 text-center shadow-sm shadow-slate-900/5 transition duration-200 hover:-translate-y-1 hover:border-brand/25 hover:shadow-lg hover:shadow-brand/10 sm:min-h-44 sm:items-start sm:p-5 sm:text-left">
               <span aria-hidden="true" className="absolute inset-x-5 top-0 h-1 rounded-b-full bg-gradient-to-r from-sky-200 via-brand/70 to-sky-200 opacity-0 transition-opacity group-hover:opacity-100" />
-              <span className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-3 text-brand shadow-sm transition duration-200 group-hover:-translate-y-0.5 group-hover:bg-brand group-hover:text-white"><Icon size={23} /></span>
+              <span className="rounded-xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-3 text-brand shadow-sm transition duration-200 group-hover:-translate-y-0.5 group-hover:bg-blue-50 group-hover:text-brand"><Icon size={23} /></span>
               <p className="text-sm font-bold leading-snug text-navy sm:text-base">{title}</p>
               {note && <p className="-mt-1 text-xs font-medium text-slate-500 sm:text-sm">({note})</p>}
             </li>

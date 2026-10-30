@@ -1,6 +1,7 @@
 import { brand } from "../data/content";
+import { startCheckout } from "../lib/checkout";
 
-// WhatsApp booking link used by every "Book Now" button
+// WhatsApp support link used after checkout
 export const bookingUrl = (extra = "") =>
   `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(brand.bookingMessage + " " + extra)}`;
 
@@ -39,15 +40,14 @@ export function Img({ src, alt, fallback = "📷", className = "" }) {
   );
 }
 
-export function BookButton({ children, className = "", extra = "" }) {
+export function BookButton({ children, className = "", extra = "", onClick }) {
   return (
-    <a
-      href={bookingUrl(extra)}
-      target="_blank"
-      rel="noreferrer"
+    <button
+      type="button"
+      onClick={(event) => { onClick?.(event); if (!event.defaultPrevented) startCheckout(extra); }}
       className={`button-shine inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-6 py-3 font-semibold text-white transition hover:bg-brand-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${className}`}
     >
       {children}
-    </a>
+    </button>
   );
 }

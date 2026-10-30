@@ -96,10 +96,10 @@ export const features = {
 
 export const products = {
   eyebrow: "Our GPS product",
-  title: "One GPS Tracker. Just ₹199.",
-  text: "Get a GPS vehicle tracker for just ₹199.",
+  title: "One GPS Tracker. Just ₹3,299.",
+  text: "Get a GPS vehicle tracker for just ₹3,299.",
   items: [
-    { name: "GPS Vehicle Tracker", price: 199, image: "/images/product%20image.webp", points: ["Live location tracking", "Mobile app support", "Compact & waterproof"] },
+    { name: "GPS Vehicle Tracker", price: 3299, image: "/images/product%20image.webp", points: ["Live location tracking", "Mobile app support", "Compact & waterproof"] },
   ],
 };
 
