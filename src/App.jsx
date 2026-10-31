@@ -8,7 +8,6 @@ import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
-import Checkout from "./components/Checkout";
 
 function LandingPage() {
   useEffect(() => {
@@ -46,7 +45,6 @@ function LandingPage() {
   );
 }
 
-// Keep checkout on its own route so payment form state and landing-page hooks stay isolated.
 export default function App() {
-  return window.location.pathname === "/checkout" ? <Checkout /> : <LandingPage />;
+  return <LandingPage />;
 }
