@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import VehicleTypes from "./components/VehicleTypes";
 import Problems from "./components/Problems";
 import Features from "./components/Features";
+import LiveAppDemo from "./components/LiveAppDemo";
 import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import FinalCta from "./components/FinalCta";
@@ -36,6 +37,7 @@ function LandingPage() {
         <VehicleTypes />
         <Problems />
         <Features />
+        <LiveAppDemo />
         <Products />
         <Testimonials />
         <FinalCta />
