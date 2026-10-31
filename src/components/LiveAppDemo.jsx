@@ -1,4 +1,5 @@
-import { ArrowUpRight, Smartphone } from "lucide-react";
+import { useState } from "react";
+import { ArrowUpRight, Check, Copy, KeyRound, Smartphone } from "lucide-react";
 import { Section } from "./shared";
 
 const playStoreUrl = "https://play.google.com/store/apps/details?id=com.trucksathi.myapp&hl=en_IN";
@@ -25,6 +26,18 @@ const screens = [
 ];
 
 export default function LiveAppDemo() {
+  const [copiedValue, setCopiedValue] = useState("");
+
+  const copyDemoValue = async (label, value) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedValue(label);
+      window.setTimeout(() => setCopiedValue(""), 1800);
+    } catch {
+      setCopiedValue("");
+    }
+  };
+
   return (
     <Section id="app-demo" className="bg-gradient-to-br from-[#073b5c] via-[#06496d] to-[#062f4d] text-white">
       <div className="grid items-center gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10 xl:gap-12">
@@ -51,6 +64,33 @@ export default function LiveAppDemo() {
           </a>
           <p className="mt-3 text-xs text-sky-200">Available for Android</p>
         </div>
+
+        <aside className="mx-auto w-full max-w-2xl rounded-2xl border-2 border-dashed border-sky-500 bg-white p-3 text-[#073b5c] shadow-xl sm:p-4 lg:col-span-2 lg:col-start-1 lg:row-start-2">
+          <h3 className="mb-2 flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-sky-600 sm:text-sm">
+            <KeyRound size={15} className="text-orange-600" /> Demo Login Details
+          </h3>
+          {[
+            { label: "Register Number", value: "9157405800" },
+            { label: "OTP", value: "654321" },
+          ].map(({ label, value }) => (
+            <div key={label} className="mb-2 flex items-center justify-between gap-3 rounded-lg bg-sky-100 px-3 py-2">
+              <div>
+                <p className="text-[11px] font-medium text-slate-500">{label}</p>
+                <p className="text-base font-extrabold tracking-[0.12em] sm:text-lg">{value}</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => copyDemoValue(label, value)}
+                className="inline-flex min-w-[4.5rem] items-center justify-center gap-1 rounded-md bg-sky-500 px-2.5 py-2 text-xs font-bold text-white transition hover:bg-sky-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600"
+                aria-label={`Copy ${label}`}
+              >
+                {copiedValue === label ? <Check size={14} /> : <Copy size={13} />}
+                {copiedValue === label ? "Copied" : "Copy"}
+              </button>
+            </div>
+          ))}
+          <p className="text-[11px] leading-4 text-slate-500">Ye sirf demo account hai — koi signup ya payment nahi lagega.</p>
+        </aside>
 
         <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-4 [scrollbar-width:thin] sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-3 sm:overflow-visible sm:px-0 sm:pb-0 lg:gap-4">
           {screens.map((screen, index) => (
