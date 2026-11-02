@@ -9,6 +9,7 @@ import Products from "./components/Products";
 import Testimonials from "./components/Testimonials";
 import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
+import StickyBookingBar from "./components/StickyBookingBar";
 
 function LandingPage() {
   useEffect(() => {
@@ -43,6 +44,7 @@ function LandingPage() {
         <FinalCta />
       </main>
       <Footer />
+      <StickyBookingBar />
     </>
   );
 }

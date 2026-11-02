@@ -13,6 +13,11 @@
 html { scroll-behavior: smooth; }
 html, body, #root { width: 100%; max-width: 100%; min-width: 0; }
 body { @apply font-sans text-slate-700 antialiased; overflow-x: hidden; text-transform: capitalize; }
+body { padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); background-color: #062f4d; }
+
+@media (min-width: 640px) {
+  body { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+}
 
 .button-shine {
   position: relative;

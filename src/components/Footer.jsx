@@ -15,7 +15,7 @@ export default function Footer() {
 
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm md:max-w-sm md:justify-end">
-            {navLinks.map((link) => (
+            {navLinks.filter((link) => link.label !== "Support").map((link) => (
               <li key={link.href}><a href={link.href} className="transition hover:text-white focus-visible:outline-2 focus-visible:outline-sky-300">{link.label}</a></li>
             ))}
           </ul>
